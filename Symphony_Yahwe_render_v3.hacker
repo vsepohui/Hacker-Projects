@@ -1,6 +1,6 @@
 sub piano {
 	my $note = shift;
-	return sample ("../Samples/sound_keyboard_staff/$note.mp3")->play(0)
+	return sample ("Samples/sound_keyboard_staff/$note.mp3")->play(0)
 }
 
 my @e4 = crop piano('e1'), 0.8;

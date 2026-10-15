@@ -16,7 +16,7 @@ my $synth = virtual(sub {
 	return [Hacker::Synth::Sin->generate(int 100*$x), Hacker::Synth::Sin->generate(int 240*$y)];
 });
 
-my $o = sample('../Samples/organ1-yamaha.flac');
+my $o = sample('Samples/organ1-yamaha.flac');
 
 
 
@@ -28,15 +28,15 @@ for (0..($len*100-1)) {
 	#push @c2, $_->[1];
 }
 
-my $kick  = sample('../Samples/extra/kick_029.flac');
-my $snare = sample('../Samples/extra/snare_028.flac');
-my $hat   = sample('../Samples/extra/hat_003.flac');
+my $kick  = sample('Samples/extra/kick_029.flac');
+my $snare = sample('Samples/extra/snare_028.flac');
+my $hat   = sample('Samples/extra/hat_003.flac');
 
-my @c3 = seq([$kick->play(-24)],  120, '0,.,.,.,.,0,.,.,0,.,.,.,.,0,.,.'); # Kick
-my @c4 = seq([$kick->play(-36)],  120, '0,.,.,.,.,0,.,.,0,.,.,.,.,0,.,.'); # Sub kick
-my @c5 = seq([$snare->play(-12)], 120, '.,.,0,.,.,.,0,.,.,.,0,.,.,.,0,.'); # Snare
+my @c3 = seq([$kick->play(-12)],  120, '0,.,.,.,.,0,.,.,0,.,.,.,.,0,.,.'); # Kick
+my @c4 = seq([$kick->play(-24)],  120, '0,.,.,.,.,0,.,.,0,.,.,.,.,0,.,.'); # Sub kick
+my @c5 = seq([$snare->play(0)], 120, '.,.,0,.,.,.,0,.,.,.,0,.,.,.,0,.'); # Snare
 
-my @h = seq([$hat->play(-24)], 140, join ',', (('0', '.') x (8 * 20))); # Hat
+my @h = seq([$hat->play(-12)], 140, join ',', (('0', '.') x (8 * 20))); # Hat
 
 
 my @drumline = (mix(\@c3,\@c4,\@c5,\@h))x20;
